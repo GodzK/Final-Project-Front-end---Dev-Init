@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import Notification from './Notification/Notification'
 import './index.css'
 import { BrowserRouter , Route ,Routes} from 'react-router-dom'
 import { createClient } from '@supabase/supabase-js'
@@ -16,7 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <SessionContextProvider supabaseClient={supabase}>
       <Routes >
     <Route path='/' element={<App/>}></Route>
-    <Route path='/calendar' element={<Calendar/>}></Route>
+    <Route path='/Noti' element={<Notification/>}></Route>
+    <Route path='/Calendar' element={<Calendar/>}></Route>
       </Routes>
     </SessionContextProvider>
   </React.StrictMode>
