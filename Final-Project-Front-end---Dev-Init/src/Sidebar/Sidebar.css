@@ -24,12 +24,15 @@
   padding: 20px;
   transition: transform 0.3s ease-in-out;
   transform: translateX(-100%); 
+  z-index: 1000;
 }
 
 .sidebar.open {
   transform: translateX(0);
 }
-
+span{
+  color: red;
+}
 
 .sidebar-toggle {
   background-color: transparent;

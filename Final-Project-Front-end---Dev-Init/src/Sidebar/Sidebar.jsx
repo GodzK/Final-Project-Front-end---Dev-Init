@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBell, faAdd, faTimes , faBars, faCalendar, faCalendarCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
-
+import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
 function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const session = useSession(); 
+  const supabase = useSupabaseClient();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -15,8 +16,8 @@ function Sidebar() {
   return (
     <>
       <button className="sidebar-toggle" onClick={toggleSidebar}>
-        <FontAwesomeIcon icon={faArrowAltCircleRight} style={{padding:"0.5rem", color:"black"}}/>
-        <h5 style={{fontSize:"13px"}}>Slide a Navbar!</h5>
+        <FontAwesomeIcon icon={faBars} style={{padding:"0.5rem", color:"white"}}/>
+       
       </button>
 
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
@@ -27,26 +28,27 @@ function Sidebar() {
           <h1 style={{ color: "red" }}>PK Todolist</h1>
         </div>
         <div className="menu">
-          <div className="menu-item">
+          <div className="menu-item"> 
+          <FontAwesomeIcon icon={faHome} />
             <Link to="/">
-              <FontAwesomeIcon icon={faHome} />
+             
               <span>HOME</span>
             </Link>
           </div>
           <div className="menu-item">
             <FontAwesomeIcon icon={faBell} />
-            <Link to="/Noti">Notification</Link>
+            <Link to="/Noti"> <span>Noti</span></Link>
           </div>
-          <div className="menu-item">
+          <div className="menu-item"> 
+          <FontAwesomeIcon icon={faCalendarDay} />
             <Link to="/Calendar">
-              <FontAwesomeIcon icon={faCalendarDay} />
-              <span>Calendar</span>
+             <span>Calendar</span>
             </Link>
           </div>
         </div>
         <div className="profile">
           <div className="profile-icon"></div>
-          <p> user</p>
+          <p>User</p>
           <i className="icon dropdown-icon"></i>
         </div>
       </div>
