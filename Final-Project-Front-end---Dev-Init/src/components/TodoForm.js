@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import DateTimePicker from "react-datetime-picker";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import {
   useSession,
   useSupabaseClient,
   useSessionContext,
 } from "@supabase/auth-helpers-react";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 export const TodoForm = ({ addTodo }) => {
   const [value, setValue] = useState("");
 
@@ -52,11 +55,11 @@ export const TodoForm = ({ addTodo }) => {
       summary: eventName,
       description: eventDescription,
       start: {
-        dateTime: start.toISOString(), // Date.toISOString() ->
+        dateTime: start.toISOString(), 
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // America/Los_Angeles
       },
       end: {
-        dateTime: end.toISOString(), // Date.toISOString() ->
+        dateTime: end.toISOString(), 
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // America/Los_Angeles
       },
     };
@@ -89,7 +92,7 @@ export const TodoForm = ({ addTodo }) => {
      
       {session ? (
         <> 
-       
+        <h4><span>{session.user.email}</span></h4>
           <form onSubmit={handleSubmit} className="TodoForm">
           <p>Start of your event</p>
             <DateTimePicker onChange={setStart} value={start} />
@@ -116,7 +119,7 @@ export const TodoForm = ({ addTodo }) => {
         </>
       ) : (
         <>
-          <button onClick={() => googleSignIn()}>Sign In With Google</button>
+          <button onClick={() => googleSignIn()}  className="todo-btn">Sign In With Google </button>
         </>
       )}
     </div>

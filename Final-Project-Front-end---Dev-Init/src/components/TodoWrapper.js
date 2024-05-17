@@ -4,15 +4,13 @@ import { TodoForm } from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 import { EditTodoForm } from "./EditTodoForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
 import {
   faList,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
-const session = useSession(); // tokens, when session exists we have a user
-  const supabase = useSupabaseClient(); // talk to supabase!
+
   const addTodo = (todo) => {
     setTodos([
       ...todos,
@@ -49,8 +47,7 @@ const session = useSession(); // tokens, when session exists we have a user
   return (
     <div className="TodoWrapper">
       <div style={{margin:"1rem" , textAlign:"start", }} >
-    
-         <h1 >{session.user.email} List</h1>
+         <h1 ><FontAwesomeIcon icon={faList}/>  List</h1>
       </div>
     
       <TodoForm addTodo={addTodo} />

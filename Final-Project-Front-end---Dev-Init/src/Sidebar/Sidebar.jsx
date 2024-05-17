@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons/faCalendarDay";
 import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
 function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  
+  const [isOpen, setIsOpen] = useState(true);
   const session = useSession(); 
   const supabase = useSupabaseClient();
   const toggleSidebar = () => {
@@ -35,10 +36,7 @@ function Sidebar() {
               <span>HOME</span>
             </Link>
           </div>
-          <div className="menu-item">
-            <FontAwesomeIcon icon={faBell} />
-            <Link to="/Noti"> <span>Noti</span></Link>
-          </div>
+       
           <div className="menu-item"> 
           <FontAwesomeIcon icon={faCalendarDay} />
             <Link to="/Calendar">

@@ -5,9 +5,7 @@
         font-size: 0.8em;  
     
     }
-    .sidebar-toggle {
-      display: contents; 
-    }
+  
 }
 
 .sidebar {
@@ -24,7 +22,7 @@
   padding: 20px;
   transition: transform 0.3s ease-in-out;
   transform: translateX(-100%); 
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .sidebar.open {
